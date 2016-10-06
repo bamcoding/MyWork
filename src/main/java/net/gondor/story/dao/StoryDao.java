@@ -11,6 +11,8 @@ public interface StoryDao {
 	public int writeStory(StoryVO story);
 	public void deleteStory(String id);
 	public void updateHitCount(String id);
+	//public int updateLikeCount(String id);
 	public int updateLikeCount(String id);
+	public int getLikeCount(String id);
 	
 }

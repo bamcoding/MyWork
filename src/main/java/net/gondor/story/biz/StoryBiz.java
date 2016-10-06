@@ -12,6 +12,7 @@ public interface StoryBiz {
 	public StoryVO getStory(String id, HttpServletRequest request);
 	public boolean writeStory(StoryVO story, HttpServletRequest request);
 	public void deleteStory(String id);
+	//public int updateLikeCount(String id);
 	public boolean updateLikeCount(String id);
 	
 }

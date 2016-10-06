@@ -30,11 +30,11 @@ public class DolikeServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String id = param.getStringParam(request, "id");
 		
-		boolean isTrue = biz.updateLikeCount(id);
+		//int likeCount = biz.updateLikeCount(id);
+		boolean likeCount = biz.updateLikeCount(id);
+		
 		PrintWriter out = response.getWriter();
-		out.print("<script type='text/javascript'>");
-		out.print( isTrue + "");
-		out.print("</script>");
+		out.print( likeCount + "");
 		out.flush();
 		out.close();
 	}

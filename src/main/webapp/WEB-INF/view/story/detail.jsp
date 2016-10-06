@@ -15,11 +15,12 @@
 		});
 		$("#likeBtn").click(function() {
 			$.post("/WebToon/story/doLike", { id : "${story.id }"}, function(data) {
-				if(data = "true"){
+				//if(data){
+				//	$("#like").text(data);
+				if(data == "true"){
 					var count = parseInt($("#like").text());
 					$("#like").text(count+1);
 				}
-					
 			});
 		});
 		$("#delBtn").click(function(){

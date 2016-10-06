@@ -58,9 +58,18 @@ public class StoryBizImpl implements StoryBiz {
 	}
 
 	@Override
+/*	public int updateLikeCount(String id) {
+		int count=0;
+		if(dao.updateLikeCount(id) > 0){
+			count = dao.getLikeCount(id);
+		}
+		return count;
+	}*/
 	public boolean updateLikeCount(String id) {
+		/*int count=0;
+		if(dao.updateLikeCount(id) > 0){
+			count = dao.getLikeCount(id);
+		}*/
 		return dao.updateLikeCount(id) > 0;
-
 	}
-
 }

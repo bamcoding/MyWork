@@ -175,4 +175,31 @@ public class StoryDaoImpl extends DaoSupport implements StoryDao {
 			}
 		});
 	}
+
+	@Override
+	public int getLikeCount(String id) {
+		return (int)getTable(new QueryResult() {
+			
+			@Override
+			public PreparedStatement query(Connection conn) throws SQLException {
+				StringBuffer query = new StringBuffer();
+				query.append(" SELECT	LIKE_CNT ");
+				query.append(" FROM		WEBTOON.STORY ");
+				query.append(" WHERE	STORY_ID=? ");
+				PreparedStatement pstmt = conn.prepareStatement(query.toString());
+				pstmt.setString(1, id);
+				
+				return pstmt;
+			}
+			
+			@Override
+			public Object makeObject(ResultSet rs) throws SQLException {
+				int result = 0;
+				if(rs.next()){
+					result = rs.getInt("LIKE_CNT");
+				}
+				return result;
+			}
+		});
+	}
 }
