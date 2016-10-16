@@ -19,10 +19,39 @@
 				style="width: 40px; height: 20px; vertical-align: middle;">
 				<img src="/WebToon/img/manha.png" style="width: 100%; height: 100%;" />
 			</div>
-			</div>&nbsp;&nbsp;|&nbsp;
-	<div class="block">웹소설</div>
-	<div class="block" style="vertical-align: middle;"><input type="text" placeholder="제목/작가로 검색할 수 있습니다." style="margin-left:20px;width:200px;height:15px;border:3px solid #4fa52b"/></div>
-	<div class="block" style="vertical-align: middle;"><input type="button" value="검색" style="background: #4fa52b;color:white;width:50px;border:0px;padding:3px"/></div>
+			</div>&nbsp;&nbsp;|&nbsp;&nbsp;
+	<div class="block">웹소설</div>&nbsp;&nbsp;|&nbsp;&nbsp;
+	<script type="text/javascript" src="/WebToon/js/jquery-3.1.1.js"></script>
+	<script type="text/javascript">
+	$().ready(function(){
+		$("#sel").change(function(){
+			var a1 = $("#sel option:selected").text();
+			alert(a1);
+		});
+		
+		$("#searchBtn").click(function(){
+			var val = $("#searchVal").val();
+			$.post("./doSearch", $("#searchForm").serialize(),
+				function(data){
+					alert("\""+data+"\""+"으로 검색한 결과입니다.");
+			});
+		});
+	});
+	</script>
+<form id="searchForm" class="block">	
+	<div class="block" style="vertical-align: middle;">
+		<select id="sel" style="border-radius:5px">
+			<option>제목/내용</option>
+			<option>제목</option>
+			<option>내용</option>
+			<option>작성자</option>
+		</select>
+	</div>
+	<div class="block" style="vertical-align: middle;">
+	<input type="text" id="searchVal" name="searchVal" placeholder="제목/작가로 검색할 수 있습니다." style="margin-left:10px;width:200px;height:15px;border:3px solid #4fa52b"/>
+	</div>
+	<div class="block" style="vertical-align: middle;"><input type="button" id="searchBtn" value="검색" style="background: #4fa52b;color:white;width:50px;border:0px;padding:3px"/></div>
+</form>
 	<c:if test="${not empty sessionScope._USER_INFO_ }">
 	<div class="block right">
 		<div class="block" style="font-size: 17px;margin-right:10px;">${sessionScope._USER_INFO_.nick } : 

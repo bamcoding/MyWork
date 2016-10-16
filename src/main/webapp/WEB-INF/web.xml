@@ -141,4 +141,14 @@
     <filter-name>MemberFilter</filter-name>
     <url-pattern>/story/detail</url-pattern>
   </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoSearchServlet</display-name>
+    <servlet-name>DoSearchServlet</servlet-name>
+    <servlet-class>net.gondor.user.web.DoSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoSearchServlet</servlet-name>
+    <url-pattern>/story/doSearch</url-pattern>
+  </servlet-mapping>
 </web-app>

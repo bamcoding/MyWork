@@ -35,6 +35,10 @@ public class StoryBizImpl implements StoryBiz {
 		HttpSession session = request.getSession();
 		UserVO user = (UserVO) session.getAttribute(Session.SESSION_INFO);
 		userdao.updatePoint(user.getId(), -1);
+		
+		user = userdao.getUserBy(user);
+		session.setAttribute(Session.SESSION_INFO, user);
+		
 		dao.updateHitCount(id);
 		return dao.getStory(id);
 	}
@@ -47,12 +51,13 @@ public class StoryBizImpl implements StoryBiz {
 
 	@Override
 	public boolean writeStory(StoryVO article, HttpServletRequest request) {
-		// TODO Auto-generated method stub
 		boolean isTrue = dao.writeStory(article) > 0;
 		if (isTrue) {
 			HttpSession session = request.getSession();
 			UserVO user = (UserVO) session.getAttribute(Session.SESSION_INFO);
-			userdao.updatePoint(user.getId(), -1);
+			userdao.updatePoint(user.getId(), 10);
+			user = userdao.getUserBy(user);
+			session.setAttribute(Session.SESSION_INFO, user);
 		}
 		return isTrue;
 	}

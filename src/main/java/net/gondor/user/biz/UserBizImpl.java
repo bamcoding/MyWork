@@ -30,12 +30,12 @@ public class UserBizImpl implements UserBiz {
 	@Override
 	public boolean logIn(UserVO user, HttpServletRequest request) {
 		UserVO userInfo = dao.getUserBy(user);
-
+		HttpSession session = request.getSession();
 		// NullPointerException 발생 방지하기 위함 원래는 userInfo.getUserId().length() > 0
 		// 만 해주면됨!
 		if (userInfo != null && userInfo.getId() != null && userInfo.getId().length() > 0) {
 			dao.updatePoint(userInfo.getId(), 20);
-			HttpSession session = request.getSession();
+			userInfo = dao.getUserBy(user);
 			session.setAttribute(Session.SESSION_INFO, userInfo);
 			return true;
 		}

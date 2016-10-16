@@ -23,13 +23,13 @@ public class UserDaoImpl extends DaoSupport implements UserDao{
 				query.append("         USR_ID                                                                   ");
 				query.append("         , USR_NICK                                                               ");
 				query.append("         , USR_PWD                                                                ");
-				query.append("         , CRT_DT ,USR_POINT                                                                ");
+				query.append("         , CRT_DT , USR_POINT                                                                ");
 				query.append("         )                                                                        ");
 				query.append(" VALUES (                                                                         ");
 				query.append("         'US-'||TO_CHAR(SYSDATE,'YYYYMMDD')||'-'||LPAD(STORY_USRS_ID_SEQ.NEXTVAL,6,0)   ");
 				query.append("         ,?                                                                       ");
 				query.append("         ,?                                                                       ");
-				query.append("         ,SYSDATE , 0                                                              ");
+				query.append("         ,SYSDATE , 100                                                              ");
 				query.append(" )                                                                                ");
 				PreparedStatement pstmt = conn.prepareStatement(query.toString());
 				pstmt.setString(1, userVO.getNick());
